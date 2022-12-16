@@ -19,7 +19,7 @@
 <style>
 .center {
 	margin: auto;
-	width: 30%;
+	width: 50%;
 	padding: 50px;
 }
 </style>
@@ -27,38 +27,39 @@
 </head>
 
 <div class="container center">
-	<form>
+	<form action="SaveServlet" method="post">
 		<div class="mb-3">
 			<label for="isbn" class="form-label">ISBN:</label> <input type="text"
-				class="form-control" id="isbn">
+				class="form-control" id="isbn" name="isbn">
 		</div>
 		<div class="mb-3">
 			<label for="title" class="form-label">Title:</label> <input
-				type="text" class="form-control" id="title">
+				type="text" class="form-control" id="title" name="title">
 		</div>
 
 		<div class="mb-3">
 			<label for="author" class="form-label">Author:</label> <input
-				type="text" class="form-control" id="author">
+				type="text" class="form-control" id="author" name="author">
 		</div>
 
 		<div class="mb-3">
 			<label for="publisher" class="form-label">Publisher:</label> <input
-				type="text" class="form-control" id="publisher">
+				type="text" class="form-control" id="publisher" name="publisher">
 		</div>
 		<div class="mb-3">
 			<label for="price" class="form-label">Price:</label> <input
-				type="text" class="form-control" id="price">
+				type="text" class="form-control" id="price" name="price">
 		</div>
 		<div class="mb-3">
-			<label for="year" class="form-label">Year:</label> <input type="text"
+			<label for="year" class="form-label">Year:</label> 
+			<input type="text" name="year"
 				class="form-control" id="year">
 		</div>
 
 		<br> <br>
 
 		<div class="position-relative">
-			<a href="#" class="position-absolute bottom-0 start-0">View all
+			<a href="ViewServlet" class="position-absolute bottom-0 start-0">View all
 				books</a> <input type="submit" value="Add"
 				class="btn btn-primary position-absolute bottom-0 end-0">
 		</div>
