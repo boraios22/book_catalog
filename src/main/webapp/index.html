@@ -5,67 +5,67 @@
 <title>Add book</title>
 
 <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+	crossorigin="anonymous"></script>
 
 <style>
 .center {
-  margin: auto;
-  width: 30%;
-  padding: 50px;
+	margin: auto;
+	width: 30%;
+	padding: 50px;
 }
 </style>
 
 </head>
-<body class="center">
-<div class="container">
-  <form action="SaveServlet" method="post">
-	<div class="mb-3">
-    	<label for="isbn" class="form-label">ISBN:</label>
-    	<input type="text" class="form-control" id="isbn">
-  	</div>
-  	<div class="mb-3">
-    	<label for="title" class="form-label">Title:</label>
-    	<input type="text" class="form-control" id="title">
-  	</div>
 
-	<div class="mb-3">
-    	<label for="author" class="form-label">Author:</label>
-    	<input type="text" class="form-control" id="author">
-  	</div>
-  	
-  	<div class="mb-3">
-    	<label for="publisher" class="form-label">Publisher:</label>
-    	<input type="text" class="form-control" id="publisher">
-  	</div>
-  	<div class="mb-3">
-    	<label for="price" class="form-label">Price:</label>
-    	<input type="text" class="form-control" id="price">
-  	</div>
-  	<div class="mb-3">
-    	<label for="year" class="form-label">Year:</label>
-    	<input type="text" class="form-control" id="year">
-  	</div>
-  	
-  	<br>
-  	<br>
+<div class="container center">
+	<form>
+		<div class="mb-3">
+			<label for="isbn" class="form-label">ISBN:</label> <input type="text"
+				class="form-control" id="isbn">
+		</div>
+		<div class="mb-3">
+			<label for="title" class="form-label">Title:</label> <input
+				type="text" class="form-control" id="title">
+		</div>
 
-	<div class="position-relative">
-		<a href="#" class="position-absolute bottom-0 start-0">View all books</a>
-		<input type="submit" value="Add" class="btn btn-primary position-absolute bottom-0 end-0">
-	</div>
-	
+		<div class="mb-3">
+			<label for="author" class="form-label">Author:</label> <input
+				type="text" class="form-control" id="author">
+		</div>
 
+		<div class="mb-3">
+			<label for="publisher" class="form-label">Publisher:</label> <input
+				type="text" class="form-control" id="publisher">
+		</div>
+		<div class="mb-3">
+			<label for="price" class="form-label">Price:</label> <input
+				type="text" class="form-control" id="price">
+		</div>
+		<div class="mb-3">
+			<label for="year" class="form-label">Year:</label> <input type="text"
+				class="form-control" id="year">
+		</div>
 
-</form>
+		<br> <br>
 
+		<div class="position-relative">
+			<a href="#" class="position-absolute bottom-0 start-0">View all
+				books</a> <input type="submit" value="Add"
+				class="btn btn-primary position-absolute bottom-0 end-0">
+		</div>
 
-
+	</form>
 
 </div>
-
-
 
 </body>
 </html>
