@@ -1,6 +1,8 @@
 package com.itstep.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +13,20 @@ import com.itstep.dao.BookDao;
 import com.itstep.model.Book;
 
 /**
- * Servlet implementation class SaveServlet
+ * Servlet implementation class ApplyEditServlet
  */
-@WebServlet("/SaveServlet")
-public class SaveServlet extends HttpServlet {
+@WebServlet("/ApplyEditServlet")
+public class ApplyEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
 		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
 		
 		String ISBN = request.getParameter("isbn");
 		String title = request.getParameter("title");
@@ -32,15 +35,15 @@ public class SaveServlet extends HttpServlet {
 		int year = Integer.parseInt(request.getParameter("year"));
 		float price = Float.parseFloat(request.getParameter("price"));
 		
-		Book newBook = new Book(ISBN, title, author, publisher, year, price);
+		Book updateBook = new Book(ISBN, title, author, publisher, year, price);
 		
-		int status = BookDao.saveBook(newBook);
+		int status = BookDao.update(updateBook);
 		
 		if (status > 0) {
-			response.getWriter().print("Success");
-			request.getRequestDispatcher("index.html").include(request, response);
+			response.sendRedirect("ViewServlet");
 		} else {
-			response.getWriter().print("Failed");
+			out.print("Sorry, failed to update.");
 		}
 	}
+
 }
