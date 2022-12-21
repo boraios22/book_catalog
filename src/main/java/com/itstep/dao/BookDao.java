@@ -31,6 +31,53 @@ public class BookDao {
 		return connect;
 	}
 	
+	public static int deleteBook (String isbn) {
+		String sql = "DELETE FROM tbl_books WHERE isbn=?";
+		Connection connect = getConnection();
+		
+		int status = 0;
+		try {
+			PreparedStatement statement = connect.prepareStatement(sql);
+			statement.setString(1, isbn);
+			
+			status = statement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return status;
+	}
+	
+	public static int updateBook (Book book) {
+		String sql = "UPDATE tbl_books SET title=?, author=?, publisher=?, year=?, price=? WHERE isbn=?";
+		
+		Connection connect = getConnection();
+		
+		int status = 0;
+		
+		try {
+			
+			PreparedStatement statement = connect.prepareStatement(sql);
+			statement.setString(1, book.getTitle());
+			statement.setString(2, book.getAuthor());
+			statement.setString(3, book.getPublisher());
+			statement.setInt(4, book.getYear());
+			statement.setFloat(5, book.getPrice());
+			statement.setString(6, book.getISBN());
+			
+			status = statement.executeUpdate(); //0 failed, > 0 success
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {connect.close();} catch (SQLException e) {}
+		}
+		
+		return status;
+	}
+
 	public static int saveBook(Book book) {
 		String sql = "INSERT INTO tbl_books VALUES(?, ?, ?, ?, ?, ?)";
 		Connection connect = getConnection();
@@ -57,6 +104,39 @@ public class BookDao {
 		
 		return status;
 	}
+	
+	public static Book getBookByIsbn (String isbn) {
+		String sql = "SELECT * FROM tbl_books WHERE isbn=?";
+		Connection connect = getConnection();
+		
+		Book found = null;
+		try {
+			PreparedStatement statement = connect.prepareStatement(sql);
+			statement.setString(1, isbn);
+			
+			ResultSet rs = statement.executeQuery();
+			
+			while (rs.next()) {
+				String ISBN = rs.getString("isbn");
+				String title = rs.getString("title");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				int year = rs.getInt("year");
+				float price = rs.getFloat("price");
+				
+				found = new Book(ISBN, title, author, publisher, year, price);
+				
+				break;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return found;
+	}
+	
 	public static List<Book> getAllBooks() {
 		String sql = "SELECT * FROM tbl_books";
 		Connection connect = getConnection();

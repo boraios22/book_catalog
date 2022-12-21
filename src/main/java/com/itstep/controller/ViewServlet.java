@@ -34,6 +34,12 @@ public class ViewServlet extends HttpServlet {
 		out.print("<title>");
 		out.print("Book Lising");
 		out.print("</title>");
+		out.print("<style>");
+		out.print("table, th, td {\n"
+				+ "  border-collapse: collapse;\n"
+				+ "border: 1px solid;"
+				+ "}");
+		out.print("</style>");
 		out.print("</head>");
 		out.print("<body>");
 		out.print("<table>");
@@ -42,9 +48,31 @@ public class ViewServlet extends HttpServlet {
 		out.print("<th>");
 		out.print("ISBN");
 		out.print("</th>");
+		
 		out.print("<th>");
 		out.print("Title");
 		out.print("</th>");
+		out.print("<th>");
+		out.print("Author");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Publisher");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Year");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Price");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Delete");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Edit");
+		out.print("</th>");
+		
 		out.print("</tr>");
 		
 		for(Book b : books) {
@@ -55,6 +83,27 @@ public class ViewServlet extends HttpServlet {
 			out.print("<td>");
 				out.print(b.getTitle());
 			out.print("</td>");
+			out.print("<td>");
+				out.print(b.getAuthor());
+			out.print("</td>");
+			out.print("<td>");
+				out.print(b.getPublisher());
+			out.print("</td>");
+			out.print("<td>");
+				out.print(b.getYear());
+			out.print("</td>");
+			out.print("<td>");
+				out.print(b.getPrice());
+			out.print("</td>");
+			
+			out.print("<td>");
+				out.print("<a href='DeleteServlet?isbn=" + b.getISBN() + "' onclick=\"return confirm('Are you sure you want to delete this item?');\">Delete</a>");
+			out.print("</td>");
+			
+			out.print("<td>");
+				out.print("<a href='EditServlet?isbn=" + b.getISBN() + "'>Edit</a>");
+			out.print("</td>");
+			
 			out.print("</tr>");
 			
 		}
